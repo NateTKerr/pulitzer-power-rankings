@@ -533,7 +533,6 @@
 <section id="analysis" class="analysis-section">
   <div class="analysis-inner">
     <div class="analysis-intro">
-      <p class="intro-text">I ranked all 99 Pulitzer Prize-winning novels. Here's what the data says about the prize, the books, and my own biases.</p>
     </div>
 
     <div class="analysis-card fade-target">
@@ -556,13 +555,13 @@
 
     <div class="analysis-card fade-target">
       <h3 class="analysis-headline">But Non-White Authors Ranked Higher</h3>
-      <p class="analysis-context">White authors average rank 52. Non-white authors average rank 33. But sample sizes matter here: there are 85 white winners and only 14 non-white winners total. When the Pulitzer finally gave the prize to non-white writers, those books tended to be exceptional.</p>
+      <p class="analysis-context">White authors average rank 52. Non-white authors average rank 33.</p>
       <div class="chart-wrap" id="chart-4"></div>
     </div>
 
     <div class="analysis-card fade-target">
       <h3 class="analysis-headline">Women Were There Early, Got Pushed Out, and Are Still Fighting Back</h3>
-      <p class="analysis-context">The overall gender split looks fine if you squint. Women average rank 50.5, men 49.8. But zoom into decades and the story changes. Women won more than half the prizes in the 1920s and 1930s. Then the 1950s happened: zero women. The 2010s are still 7-to-2 in favor of men.</p>
+      <p class="analysis-context">Women won more than half the prizes in the 1920s and 1930s, then they didn't win a single one between 1942 and 1961. The 2010s are still 7-to-2 in favor of men and women haven't won more than men in any decade since the 1930s.</p>
       <div class="chart-wrap" id="chart-5"></div>
     </div>
 
@@ -574,13 +573,13 @@
 
     <div class="analysis-card fade-target">
       <h3 class="analysis-headline">A Third of All Winners Are Set in the South</h3>
-      <p class="analysis-context">34 of 99 books have Southern settings. That's a third of the entire canon. The Pulitzer has always had a gravitational pull toward the South, its history, its conflicts, its voices.</p>
+      <p class="analysis-context">34 of 99 books have Southern settings. That's a third of the entire list.</p>
       <div class="chart-wrap" id="chart-7"></div>
     </div>
 
     <div class="analysis-card fade-target">
       <h3 class="analysis-headline">Winning Twice Doesn't Mean Both Books Are Great</h3>
-      <p class="analysis-context">Kingsolver's second win sits at #1 in my rankings. Faulkner's two wins sit at #78 and #96. Tarkington's land at #88 and #89. Winning the Pulitzer twice is a career achievement, but it doesn't guarantee both books will hold up.</p>
+      <p class="analysis-context">Faulkner's two wins sit at #78 and #96. Tarkington's land at #88 and #89. Winning the Pulitzer twice is a career achievement, but it doesn't guarantee both books will hold up.</p>
       <div class="chart-wrap" id="chart-8"></div>
     </div>
 
@@ -606,7 +605,7 @@
 
 <script>
 const BOOKS = [
-  { rank:1,  title:"Demon Copperhead",                                  author:"Barbara Kingsolver",    year:2023, tier:1, decade:"2020s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:560,  narrativeForm:"Novel",          settingRegion:"Appalachia / South",           settingEra:"Contemporary",          posthumous:false, repeatWinner:true  },
+  { rank:1,  title:"Demon Copperhead",                                  author:"Barbara Kingsolver",    year:2023, tier:1, decade:"2020s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:560,  narrativeForm:"Novel",          settingRegion:"Appalachia / South",           settingEra:"Contemporary",          posthumous:false, repeatWinner:false },
   { rank:2,  title:"Beloved",                                           author:"Toni Morrison",         year:1988, tier:1, decade:"1980s", theme:"Race & Identity",    fame:"Famous",   style:"Experimental",      subGenre:"Historical",             gender:"F", ethnicity:"Black",      pages:324,  narrativeForm:"Novel",          settingRegion:"Midwest / South",              settingEra:"Post-Civil War",         posthumous:false, repeatWinner:false },
   { rank:3,  title:"The Amazing Adventures of Kavalier and Clay",       author:"Michael Chabon",        year:2001, tier:1, decade:"2000s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:639,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
   { rank:4,  title:"All The King's Men",                                author:"Robert Penn Warren",    year:1947, tier:1, decade:"1940s", theme:"Politics & Society", fame:"Famous",   style:"Historical",        subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:661,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
@@ -1433,16 +1432,13 @@ function buildChart8() {
   const MIN_SEP = 22;
   // Sort by best rank ascending (best = lowest rank number)
   const authors = [
-    { author:'Barbara Kingsolver', single:true, books:[
-        { title:'Demon Copperhead', rank:1, year:2023 }
-    ], note:'First win not in ranked dataset.' },
     { author:'Colson Whitehead', books:[
         { title:'The Underground Railroad', rank:5,  year:2017 },
         { title:'The Nickel Boys',          rank:21, year:2020 },
     ]},
     { author:'John Updike', books:[
-        { title:'Rabbit is Rich',  rank:29, year:1982 },
-        { title:'Rabbit at Rest',  rank:28, year:1991 },
+        { title:'Rabbit is Rich',  rank:28, year:1982 },
+        { title:'Rabbit at Rest',  rank:27, year:1991 },
     ]},
     { author:'William Faulkner', books:[
         { title:'A Fable',      rank:96, year:1955 },
