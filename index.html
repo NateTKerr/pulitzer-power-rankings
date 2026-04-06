@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nate Read All The Pulitzer Novels!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:           #F7F5F2;
+      --bg-alt:       #EFEDE9;
+      --text-h:       #1A1A1A;
+      --text-body:    #2A2A2A;
+      --text-muted:   #6B6B6B;
+      --divider:      #E0DDDA;
+      --t1:           #1B3A5C;
+      --t2:           #C43030;
+      --t3:           #D4A017;
+      --t4:           #2D6A4F;
+      --t5:           #C65D21;
+      --t6:           #5B7B9A;
+      --t7:           #8C8279;
+      --font-sans:    'Space Grotesk', sans-serif;
+      --font-serif:   'Source Serif 4', serif;
+      --max-width:    1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-body);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 54px;
+    }
+    .nav-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--text-h);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 60%;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 120ms;
+      padding-bottom: 2px;
+    }
+    .nav-link:hover { color: var(--text-h); }
+    .nav-link.active {
+      color: var(--text-h);
+      border-bottom: 2px solid var(--t1);
+    }
+
+    /* ── SITE WRAP ──────────────────────────────────────── */
+    .site-wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      padding: 56px 0 36px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .site-title {
+      font-family: var(--font-sans);
+      font-weight: 900;
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      color: var(--text-h);
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .header-sub {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      letter-spacing: -0.005em;
+    }
+
+    /* ── TOOLBAR ────────────────────────────────────────── */
+    .toolbar {
+      position: sticky;
+      top: 54px;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+      display: flex;
+      gap: 0.6rem;
+      padding: 10px 0;
+      align-items: center;
+    }
+    .toolbar-btn {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--divider);
+      padding: 0.38rem 0.85rem;
+      cursor: pointer;
+      transition: color 120ms, border-color 120ms;
+      white-space: nowrap;
+    }
+    .toolbar-btn:hover {
+      color: var(--text-h);
+      border-color: var(--text-muted);
+    }
+    .toolbar-btn[aria-pressed="true"] {
+      color: var(--text-h);
+      border-color: var(--text-h);
+    }
+    .toolbar-analysis-link {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid var(--divider);
+      padding: 0.38rem 0.85rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 120ms, border-color 120ms;
+      white-space: nowrap;
+    }
+    .toolbar-analysis-link:hover {
+      color: var(--text-h);
+      border-color: var(--text-muted);
+    }
+
+    /* ── LIST ───────────────────────────────────────────── */
+    .list-container { margin-top: 0; }
+
+    .book-item {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--divider);
+      border-left: 4px solid transparent;
+      min-height: 58px;
+      transition: background 120ms;
+    }
+    .book-item:hover { background: rgba(0,0,0,0.025); }
+
+    .book-rank {
+      flex-shrink: 0;
+      width: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: 1rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .book-body {
+      flex: 1;
+      padding: 12px 16px 12px 20px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .book-title {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      color: var(--text-h);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .book-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.2rem;
+    }
+    .book-author {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .book-year {
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    /* ── TIER HEADERS ───────────────────────────────────── */
+    .tier-header {
+      padding: 48px 0 14px;
+      border-bottom: 1px solid var(--divider);
+      margin-top: 16px;
+    }
+    .tier-header:first-child { margin-top: 8px; }
+    .tier-label {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 3px 8px;
+      margin-bottom: 10px;
+    }
+    .tier-name {
+      display: block;
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(1.1rem, 3vw, 1.7rem);
+      color: var(--text-h);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .tier-ranks {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    /* ── FILTER DRAWER ──────────────────────────────────── */
+    .filter-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(380px, 94vw);
+      background: var(--bg);
+      border-left: 1px solid var(--divider);
+      transform: translateX(100%);
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .filter-drawer.is-open { transform: translateX(0); }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 299;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+    }
+    .drawer-overlay.is-visible { opacity: 1; pointer-events: all; }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--divider);
+      flex-shrink: 0;
+      gap: 0.75rem;
+    }
+    .drawer-header h2 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-h);
+      flex: 1;
+    }
+    .drawer-btn {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--divider);
+      color: var(--text-muted);
+      padding: 0.3rem 0.65rem;
+      cursor: pointer;
+      transition: border-color 120ms, color 120ms;
+    }
+    .drawer-btn:hover { border-color: var(--text-muted); color: var(--text-h); }
+    .drawer-close { font-size: 0.9rem; border: none; color: var(--text-muted); padding: 0.3rem 0.5rem; }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px 24px;
+      overscroll-behavior: contain;
+    }
+    .drawer-body::-webkit-scrollbar { width: 3px; }
+    .drawer-body::-webkit-scrollbar-track { background: var(--bg); }
+    .drawer-body::-webkit-scrollbar-thumb { background: var(--divider); }
+
+    .filter-group { border: none; margin-bottom: 1.75rem; }
+    .filter-group legend {
+      font-family: var(--font-sans);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--divider);
+      width: 100%;
+    }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.45rem;
+      cursor: pointer;
+    }
+    .filter-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 0.9rem;
+      height: 0.9rem;
+      border: 1.5px solid var(--divider);
+      background: transparent;
+      border-radius: 0;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      transition: background 120ms, border-color 120ms;
+    }
+    .filter-checkbox:checked { background: var(--text-h); border-color: var(--text-h); }
+    .filter-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      left: 2px;
+      top: -1px;
+      width: 4px;
+      height: 8px;
+      border: 2px solid var(--bg);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg);
+    }
+    .filter-label-text {
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text-body);
+      flex: 1;
+    }
+    .filter-label-count {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    /* ── EMPTY STATE ────────────────────────────────────── */
+    .empty-state { text-align: center; padding: 5rem 1rem; }
+    .empty-state p {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .empty-state button {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid var(--divider);
+      color: var(--text-body);
+      padding: 0.5rem 1.25rem;
+      cursor: pointer;
+    }
+
+    /* ── ANALYSIS SECTION ───────────────────────────────── */
+    .analysis-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--divider);
+      padding: 4rem 40px 80px;
+    }
+    .analysis-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .analysis-intro {
+      padding: 0 0 3rem;
+      border-bottom: 1px solid var(--divider);
+      margin-bottom: 3.5rem;
+    }
+    .intro-text {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      color: var(--text-body);
+      font-style: italic;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+    .analysis-card {
+      margin-bottom: 5rem;
+    }
+    .analysis-headline {
+      font-family: var(--font-sans);
+      font-weight: 800;
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: var(--text-h);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .analysis-context {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 1.75rem;
+    }
+    .chart-wrap { width: 100%; overflow-x: auto; }
+    .chart-wrap svg { display: block; }
+    .chart-annotation {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+    .chart-tooltip {
+      position: fixed;
+      pointer-events: none;
+      background: #1A1A1A;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      padding: 7px 11px;
+      z-index: 9999;
+      display: none;
+      max-width: 260px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .analysis-closer {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem 0 3rem;
+    }
+
+    /* ── FADE ───────────────────────────────────────────── */
+    .fade-target { opacity: 0; transition: opacity 0.5s ease; }
+    .fade-target.is-visible { opacity: 1; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .site-nav { padding: 0 20px; }
+      .site-wrap { padding: 0 20px 60px; }
+      .site-header { padding: 36px 0 24px; }
+      .analysis-section { padding: 0 20px 60px; }
+      .toolbar { gap: 0.4rem; }
+      .book-rank { width: 42px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Site navigation">
+  <span class="nav-title">Nate Read All The Pulitzer Novels!</span>
+  <div class="nav-links">
+    <a href="#rankings" class="nav-link active">Rankings</a>
+    <a href="#analysis" class="nav-link">Analysis</a>
+  </div>
+</nav>
+
+<div class="site-wrap" id="rankings">
+  <header class="site-header">
+    <h1 class="site-title">Nate Read All The Pulitzer Novels!</h1>
+    <p class="header-sub">Then He Ranked Them.</p>
+  </header>
+
+  <div class="toolbar" role="toolbar" aria-label="View controls">
+    <button id="btn-tier" class="toolbar-btn" aria-pressed="true">Show Un-Tiered Rankings</button>
+    <button id="btn-filter" class="toolbar-btn" aria-pressed="false" aria-expanded="false" aria-controls="filter-drawer">Filter</button>
+    <a href="#analysis" class="toolbar-analysis-link">Analysis</a>
+  </div>
+
+  <main id="list-container" class="list-container" role="list" aria-label="Ranked book list"></main>
+</div>
+
+<section id="analysis" class="analysis-section">
+  <div class="analysis-inner">
+    <div class="analysis-intro">
+      <p class="intro-text">I ranked all 99 Pulitzer Prize-winning novels. Here's what the data says about the prize, the books, and my own biases.</p>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Newer Books Are Better</h3>
+      <p class="analysis-context">There's a -0.56 correlation between publication year and where I ranked each book. The trend is clear and I'm not apologizing for it. Modern Pulitzer winners are more ambitious, more inclusive, and more interesting to read today.</p>
+      <div class="chart-wrap" id="chart-1"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Most Pre-1970s Winners Have Been Completely Forgotten</h3>
+      <p class="analysis-context">70% of 1930s winners are classified as "Forgotten" in my dataset. That number drops to zero for every decade after 2000. Some of this is just time doing its thing, but it also means the early Pulitzer was handing the prize to a lot of books that didn't hold up.</p>
+      <div class="chart-wrap" id="chart-2"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">The First 51 Years Were All White Authors</h3>
+      <p class="analysis-context">From the prize's founding in 1918 through 1968, every single winner was white. N. Scott Momaday broke the streak in 1969. The 2020s are the first decade where non-white winners outnumber white ones (4 of 7).</p>
+      <div class="chart-wrap" id="chart-3"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">But Non-White Authors Ranked Higher</h3>
+      <p class="analysis-context">White authors average rank 52. Non-white authors average rank 33. But sample sizes matter here: there are 85 white winners and only 14 non-white winners total. When the Pulitzer finally gave the prize to non-white writers, those books tended to be exceptional.</p>
+      <div class="chart-wrap" id="chart-4"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Women Were There Early, Got Pushed Out, and Are Still Fighting Back</h3>
+      <p class="analysis-context">The overall gender split looks fine if you squint. Women average rank 50.5, men 49.8. But zoom into decades and the story changes. Women won more than half the prizes in the 1920s and 1930s. Then the 1950s happened: zero women. The 2010s are still 7-to-2 in favor of men.</p>
+      <div class="chart-wrap" id="chart-5"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Literary Risk-Taking Gets Rewarded (If It's the Right Kind)</h3>
+      <p class="analysis-context">Experimental fiction averages rank 33. Regional and genre fiction averages 68. Modernism, despite its reputation, averages 71, mostly because its winners are from early decades nobody reads anymore.</p>
+      <div class="chart-wrap" id="chart-6"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">A Third of All Winners Are Set in the South</h3>
+      <p class="analysis-context">34 of 99 books have Southern settings. That's a third of the entire canon. The Pulitzer has always had a gravitational pull toward the South, its history, its conflicts, its voices.</p>
+      <div class="chart-wrap" id="chart-7"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Winning Twice Doesn't Mean Both Books Are Great</h3>
+      <p class="analysis-context">Kingsolver's second win sits at #1 in my rankings. Faulkner's two wins sit at #78 and #96. Tarkington's land at #88 and #89. Winning the Pulitzer twice is a career achievement, but it doesn't guarantee both books will hold up.</p>
+      <div class="chart-wrap" id="chart-8"></div>
+    </div>
+
+    <div class="analysis-card fade-target">
+      <h3 class="analysis-headline">Bigger Books, Higher Tiers (Mostly)</h3>
+      <p class="analysis-context">The top three tiers average around 420–465 pages. The bottom four tiers average 320–399. The relationship isn't perfectly linear, but the rankings do tilt toward books with more scope.</p>
+      <div class="chart-wrap" id="chart-9"></div>
+    </div>
+
+    <div class="analysis-closer">— end —</div>
+  </div>
+</section>
+
+<aside id="filter-drawer" class="filter-drawer" aria-label="Filter panel" aria-hidden="true">
+  <div class="drawer-header">
+    <h2>Filter</h2>
+    <button id="btn-clear" class="drawer-btn">Clear All</button>
+    <button id="btn-close-drawer" class="drawer-btn drawer-close" aria-label="Close filter panel">✕</button>
+  </div>
+  <div class="drawer-body" id="drawer-body"></div>
+</aside>
+<div id="drawer-overlay" class="drawer-overlay" role="presentation"></div>
+
+<script>
+const BOOKS = [
+  { rank:1,  title:"Demon Copperhead",                                  author:"Barbara Kingsolver",    year:2023, tier:1, decade:"2020s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:560,  narrativeForm:"Novel",          settingRegion:"Appalachia / South",           settingEra:"Contemporary",          posthumous:false, repeatWinner:true  },
+  { rank:2,  title:"Beloved",                                           author:"Toni Morrison",         year:1988, tier:1, decade:"1980s", theme:"Race & Identity",    fame:"Famous",   style:"Experimental",      subGenre:"Historical",             gender:"F", ethnicity:"Black",      pages:324,  narrativeForm:"Novel",          settingRegion:"Midwest / South",              settingEra:"Post-Civil War",         posthumous:false, repeatWinner:false },
+  { rank:3,  title:"The Amazing Adventures of Kavalier and Clay",       author:"Michael Chabon",        year:2001, tier:1, decade:"2000s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:639,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:4,  title:"All The King's Men",                                author:"Robert Penn Warren",    year:1947, tier:1, decade:"1940s", theme:"Politics & Society", fame:"Famous",   style:"Historical",        subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:661,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:5,  title:"The Underground Railroad",                          author:"Colson Whitehead",      year:2017, tier:1, decade:"2010s", theme:"Race & Identity",    fame:"Famous",   style:"Experimental",      subGenre:"Historical",             gender:"M", ethnicity:"Black",      pages:306,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Antebellum",             posthumous:false, repeatWinner:false },
+  { rank:6,  title:"The Grapes of Wrath",                               author:"John Steinbeck",        year:1940, tier:1, decade:"1940s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:464,  narrativeForm:"Novel",          settingRegion:"West / Midwest",               settingEra:"Great Depression",       posthumous:false, repeatWinner:false },
+  { rank:7,  title:"The Keepers of the House",                          author:"Shirley Ann Grau",      year:1965, tier:1, decade:"1960s", theme:"Race & Identity",    fame:"Forgotten",style:"Regional & Genre",  subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:309,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:8,  title:"The Executioner's Song",                            author:"Norman Mailer",         year:1980, tier:2, decade:"1980s", theme:"Politics & Society", fame:"Famous",   style:"Experimental",      subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:1056, narrativeForm:"Novel",          settingRegion:"West",                         settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:9,  title:"To Kill a Mockingbird",                             author:"Harper Lee",            year:1961, tier:2, decade:"1960s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:281,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Great Depression",       posthumous:false, repeatWinner:false },
+  { rank:10, title:"Trust",                                             author:"Hernan Diaz",           year:2023, tier:2, decade:"2020s", theme:"Class & Power",      fame:"Notable",  style:"Experimental",      subGenre:"Historical",             gender:"M", ethnicity:"Latino",     pages:416,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Early-Mid 20th Century", posthumous:false, repeatWinner:false },
+  { rank:11, title:"The Color Purple",                                  author:"Alice Walker",          year:1983, tier:2, decade:"1980s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"Black",      pages:295,  narrativeForm:"Epistolary Novel",settingRegion:"South",                        settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:12, title:"Tinkers",                                           author:"Paul Harding",          year:2010, tier:2, decade:"2010s", theme:"Family & Domestic",  fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:191,  narrativeForm:"Novel",          settingRegion:"New England",                  settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:13, title:"Lonesome Dove",                                     author:"Larry McMurtry",        year:1986, tier:2, decade:"1980s", theme:"Frontier & Place",   fame:"Famous",   style:"Regional & Genre",  subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:843,  narrativeForm:"Novel",          settingRegion:"West / Southwest",             settingEra:"Post-Civil War",         posthumous:false, repeatWinner:false },
+  { rank:14, title:"The Orphan Master's Son",                           author:"Adam Johnson",          year:2013, tier:2, decade:"2010s", theme:"Politics & Society", fame:"Notable",  style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:443,  narrativeForm:"Novel",          settingRegion:"International (Korea)",        settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:15, title:"All The Light We Cannot See",                       author:"Anthony Doerr",         year:2015, tier:2, decade:"2010s", theme:"War & Conflict",     fame:"Famous",   style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:531,  narrativeForm:"Novel",          settingRegion:"International (Europe)",       settingEra:"World War II",           posthumous:false, repeatWinner:false },
+  { rank:16, title:"The Caine Mutiny",                                  author:"Herman Wouk",           year:1952, tier:2, decade:"1950s", theme:"War & Conflict",     fame:"Famous",   style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:498,  narrativeForm:"Novel",          settingRegion:"Pacific Theater",              settingEra:"World War II",           posthumous:false, repeatWinner:false },
+  { rank:17, title:"American Pastoral",                                 author:"Philip Roth",           year:1998, tier:2, decade:"1990s", theme:"Class & Power",      fame:"Famous",   style:"Experimental",      subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:423,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Mid-Late 20th Century",  posthumous:false, repeatWinner:false },
+  { rank:18, title:"The Road",                                          author:"Cormac McCarthy",       year:2007, tier:2, decade:"2000s", theme:"Family & Domestic",  fame:"Famous",   style:"Realism",           subGenre:"War",                    gender:"M", ethnicity:"White",      pages:287,  narrativeForm:"Novel",          settingRegion:"Southeast",                    settingEra:"Post-Apocalyptic",       posthumous:false, repeatWinner:false },
+  { rank:19, title:"Advise and Consent",                                author:"Allen Drury",           year:1960, tier:2, decade:"1960s", theme:"Politics & Society", fame:"Forgotten",style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:616,  narrativeForm:"Novel",          settingRegion:"Washington D.C.",              settingEra:"Cold War",               posthumous:false, repeatWinner:false },
+  { rank:20, title:"A Confederacy of Dunces",                           author:"John Kennedy Toole",    year:1981, tier:2, decade:"1980s", theme:"Politics & Society", fame:"Famous",   style:"Satire & Comedy",   subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:394,  narrativeForm:"Novel",          settingRegion:"South (New Orleans)",          settingEra:"Mid-20th Century",       posthumous:true,  repeatWinner:false },
+  { rank:21, title:"The Nickel Boys",                                   author:"Colson Whitehead",      year:2020, tier:2, decade:"2020s", theme:"Race & Identity",    fame:"Famous",   style:"Historical",        subGenre:"Social Justice",         gender:"M", ethnicity:"Black",      pages:224,  narrativeForm:"Novel",          settingRegion:"South (Florida)",              settingEra:"Civil Rights Era",       posthumous:false, repeatWinner:true  },
+  { rank:22, title:"The Sympathizer",                                   author:"Viet Thanh Nguyen",     year:2016, tier:3, decade:"2010s", theme:"War & Conflict",     fame:"Notable",  style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"Asian",      pages:371,  narrativeForm:"Novel",          settingRegion:"International (Vietnam) / West",settingEra:"Vietnam War",           posthumous:false, repeatWinner:false },
+  { rank:23, title:"Angle of Repose",                                   author:"Wallace Stegner",       year:1972, tier:3, decade:"1970s", theme:"Frontier & Place",   fame:"Notable",  style:"Historical",        subGenre:"Western & Frontier",     gender:"M", ethnicity:"White",      pages:569,  narrativeForm:"Novel",          settingRegion:"West",                         settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:24, title:"Olive Kitteridge",                                  author:"Elizabeth Strout",      year:2009, tier:3, decade:"2000s", theme:"Family & Domestic",  fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:270,  narrativeForm:"Linked Stories", settingRegion:"New England",                  settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:25, title:"A Thousand Acres",                                  author:"Jane Smiley",           year:1992, tier:3, decade:"1990s", theme:"Family & Domestic",  fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:371,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:26, title:"The Brief Wondrous Life of Oscar Wao",              author:"Junot Diaz",            year:2008, tier:3, decade:"2000s", theme:"Race & Identity",    fame:"Famous",   style:"Experimental",      subGenre:"Coming-of-Age",          gender:"M", ethnicity:"Latino",     pages:335,  narrativeForm:"Novel",          settingRegion:"Northeast / Caribbean",        settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:27, title:"A Death in the Family",                             author:"James Agee",            year:1958, tier:3, decade:"1950s", theme:"Family & Domestic",  fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:339,  narrativeForm:"Novel",          settingRegion:"South",                        settingEra:"Early 20th Century",     posthumous:true,  repeatWinner:false },
+  { rank:28, title:"Rabbit at Rest",                                    author:"John Updike",           year:1991, tier:3, decade:"1990s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:512,  narrativeForm:"Novel",          settingRegion:"Northeast / South",            settingEra:"Late 20th Century",      posthumous:false, repeatWinner:true  },
+  { rank:29, title:"Rabbit is Rich",                                    author:"John Updike",           year:1982, tier:3, decade:"1980s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:467,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Late 20th Century",      posthumous:false, repeatWinner:false },
+  { rank:30, title:"James",                                             author:"Percival Everett",      year:2025, tier:3, decade:"2020s", theme:"Race & Identity",    fame:"Notable",  style:"Experimental",      subGenre:"Historical",             gender:"M", ethnicity:"Black",      pages:303,  narrativeForm:"Novel",          settingRegion:"South (Mississippi)",          settingEra:"Antebellum",             posthumous:false, repeatWinner:false },
+  { rank:31, title:"Middlesex",                                         author:"Jeffrey Eugenides",     year:2003, tier:3, decade:"2000s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:529,  narrativeForm:"Novel",          settingRegion:"Midwest / International",      settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:32, title:"The Goldfinch",                                     author:"Donna Tartt",           year:2014, tier:3, decade:"2010s", theme:"Art & Ideas",        fame:"Famous",   style:"Realism",           subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:771,  narrativeForm:"Novel",          settingRegion:"Northeast / Southwest",        settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:33, title:"Gilead",                                            author:"Marilynne Robinson",    year:2005, tier:3, decade:"2000s", theme:"Family & Domestic",  fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:247,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:34, title:"The Stone Diaries",                                 author:"Carol Shields",         year:1995, tier:3, decade:"1990s", theme:"Family & Domestic",  fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:361,  narrativeForm:"Novel",          settingRegion:"Midwest / Canada",             settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:35, title:"The Confessions of Nat Turner",                     author:"William Styron",        year:1968, tier:4, decade:"1960s", theme:"Race & Identity",    fame:"Notable",  style:"Historical",        subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:428,  narrativeForm:"Novel",          settingRegion:"South (Virginia)",             settingEra:"Antebellum",             posthumous:false, repeatWinner:false },
+  { rank:36, title:"Breathing Lessons",                                 author:"Anne Tyler",            year:1989, tier:4, decade:"1980s", theme:"Family & Domestic",  fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:327,  narrativeForm:"Novel",          settingRegion:"Mid-Atlantic",                 settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:37, title:"The Shipping News",                                 author:"E. Annie Proulx",       year:1994, tier:4, decade:"1990s", theme:"Frontier & Place",   fame:"Notable",  style:"Realism",           subGenre:"Western & Frontier",     gender:"F", ethnicity:"White",      pages:337,  narrativeForm:"Novel",          settingRegion:"New England / Canada",         settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:38, title:"The Fixer",                                         author:"Bernard Malamud",       year:1967, tier:4, decade:"1960s", theme:"Race & Identity",    fame:"Notable",  style:"Historical",        subGenre:"Social Justice",         gender:"M", ethnicity:"White",      pages:335,  narrativeForm:"Novel",          settingRegion:"International (Russia)",       settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:39, title:"Independence Day",                                  author:"Richard Ford",          year:1994, tier:4, decade:"1990s", theme:"Class & Power",      fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:451,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:40, title:"The Killer Angels",                                 author:"Michael Shaara",        year:1975, tier:4, decade:"1970s", theme:"War & Conflict",     fame:"Notable",  style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:355,  narrativeForm:"Novel",          settingRegion:"Northeast (Gettysburg)",       settingEra:"Civil War",              posthumous:false, repeatWinner:false },
+  { rank:41, title:"The Age of Innocence",                              author:"Edith Wharton",         year:1921, tier:4, decade:"1920s", theme:"Politics & Society", fame:"Famous",   style:"Realism",           subGenre:"Satire & Comedy",        gender:"F", ethnicity:"White",      pages:305,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Gilded Age",             posthumous:false, repeatWinner:false },
+  { rank:42, title:"The Old Man and the Sea",                           author:"Ernest Hemingway",      year:1953, tier:4, decade:"1950s", theme:"Frontier & Place",   fame:"Famous",   style:"Modernism",         subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:127,  narrativeForm:"Novella",        settingRegion:"Caribbean",                    settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:43, title:"The Hours",                                         author:"Michael Cunningham",    year:1999, tier:5, decade:"1990s", theme:"Art & Ideas",        fame:"Notable",  style:"Experimental",      subGenre:"Experimental",           gender:"M", ethnicity:"White",      pages:230,  narrativeForm:"Novel",          settingRegion:"Northeast / International",    settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:44, title:"Collected Stories",                                 author:"Jean Stafford",         year:1970, tier:5, decade:"1970s", theme:"Family & Domestic",  fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:463,  narrativeForm:"Short Stories",  settingRegion:"West / Northeast",             settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:45, title:"A Visit From the Goon Squad",                       author:"Jennifer Egan",         year:2011, tier:5, decade:"2010s", theme:"Art & Ideas",        fame:"Famous",   style:"Experimental",      subGenre:"Experimental",           gender:"F", ethnicity:"White",      pages:273,  narrativeForm:"Linked Stories", settingRegion:"West / Northeast",             settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:46, title:"Empire Falls",                                      author:"Richard Russo",         year:2002, tier:5, decade:"2000s", theme:"Class & Power",      fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:483,  narrativeForm:"Novel",          settingRegion:"New England",                  settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:47, title:"The Known World",                                   author:"Edward P. Jones",       year:2004, tier:5, decade:"2000s", theme:"Race & Identity",    fame:"Notable",  style:"Historical",        subGenre:"Historical",             gender:"M", ethnicity:"Black",      pages:388,  narrativeForm:"Novel",          settingRegion:"South (Virginia)",             settingEra:"Antebellum",             posthumous:false, repeatWinner:false },
+  { rank:48, title:"The Netanyahus",                                    author:"Joshua Cohen",          year:2022, tier:5, decade:"2020s", theme:"Race & Identity",    fame:"Notable",  style:"Satire & Comedy",   subGenre:"Satire & Comedy",        gender:"M", ethnicity:"White",      pages:237,  narrativeForm:"Novel",          settingRegion:"Northeast",                    settingEra:"Cold War",               posthumous:false, repeatWinner:false },
+  { rank:49, title:"The Overstory",                                     author:"Richard Powers",        year:2019, tier:5, decade:"2010s", theme:"Frontier & Place",   fame:"Notable",  style:"Realism",           subGenre:"Western & Frontier",     gender:"M", ethnicity:"White",      pages:502,  narrativeForm:"Novel",          settingRegion:"Multiple U.S. Regions",        settingEra:"Multi-generational",     posthumous:false, repeatWinner:false },
+  { rank:50, title:"Less",                                              author:"Andrew Sean Greer",     year:2018, tier:5, decade:"2010s", theme:"Family & Domestic",  fame:"Notable",  style:"Satire & Comedy",   subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:261,  narrativeForm:"Novel",          settingRegion:"International (Multiple)",     settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:51, title:"The Stories of John Cheever",                       author:"John Cheever",          year:1979, tier:5, decade:"1970s", theme:"Class & Power",      fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:693,  narrativeForm:"Short Stories",  settingRegion:"Northeast",                    settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:52, title:"The Edge of Sadness",                               author:"Edwin O'Connor",        year:1962, tier:5, decade:"1960s", theme:"Family & Domestic",  fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:460,  narrativeForm:"Novel",          settingRegion:"New England",                  settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:53, title:"The Night Watchman",                                author:"Louise Erdrich",        year:2021, tier:5, decade:"2020s", theme:"Race & Identity",    fame:"Notable",  style:"Historical",        subGenre:"Social Justice",         gender:"F", ethnicity:"Indigenous", pages:451,  narrativeForm:"Novel",          settingRegion:"Midwest / Plains",             settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:54, title:"Now in November",                                   author:"Josephine Johnson",     year:1935, tier:5, decade:"1930s", theme:"Class & Power",      fame:"Forgotten",style:"Realism",           subGenre:"Western & Frontier",     gender:"F", ethnicity:"White",      pages:231,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Great Depression",       posthumous:false, repeatWinner:false },
+  { rank:55, title:"Foreign Affairs",                                   author:"Alison Lurie",          year:1985, tier:5, decade:"1980s", theme:"Art & Ideas",        fame:"Forgotten",style:"Satire & Comedy",   subGenre:"Satire & Comedy",        gender:"F", ethnicity:"White",      pages:291,  narrativeForm:"Novel",          settingRegion:"International (London)",       settingEra:"Contemporary",           posthumous:false, repeatWinner:false },
+  { rank:56, title:"March",                                             author:"Geraldine Brooks",      year:2006, tier:6, decade:"2000s", theme:"War & Conflict",     fame:"Notable",  style:"Historical",        subGenre:"War",                    gender:"F", ethnicity:"White",      pages:280,  narrativeForm:"Novel",          settingRegion:"South / Northeast",            settingEra:"Civil War",              posthumous:false, repeatWinner:false },
+  { rank:57, title:"Gone with the Wind",                                author:"Margaret Mitchell",     year:1937, tier:6, decade:"1930s", theme:"War & Conflict",     fame:"Famous",   style:"Historical",        subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:1037, narrativeForm:"Novel",          settingRegion:"South (Georgia)",              settingEra:"Civil War / Reconstruction",posthumous:false, repeatWinner:false },
+  { rank:58, title:"Dragon's Teeth",                                    author:"Upton Sinclair",        year:1943, tier:6, decade:"1940s", theme:"War & Conflict",     fame:"Forgotten",style:"Historical",        subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:630,  narrativeForm:"Novel",          settingRegion:"International (Europe)",       settingEra:"Interwar Period",         posthumous:false, repeatWinner:false },
+  { rank:59, title:"Interpreter of Maladies",                           author:"Jhumpa Lahiri",         year:2000, tier:6, decade:"2000s", theme:"Race & Identity",    fame:"Famous",   style:"Realism",           subGenre:"Social Justice",         gender:"F", ethnicity:"South Asian",pages:198,  narrativeForm:"Short Stories",  settingRegion:"Northeast / International (India)",settingEra:"Contemporary",        posthumous:false, repeatWinner:false },
+  { rank:60, title:"Humboldt's Gift",                                   author:"Saul Bellow",           year:1976, tier:6, decade:"1970s", theme:"Art & Ideas",        fame:"Notable",  style:"Experimental",      subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:487,  narrativeForm:"Novel",          settingRegion:"Midwest (Chicago)",            settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:61, title:"The Yearling",                                      author:"Marjorie Kinnan Rawlings",year:1939, tier:6, decade:"1930s", theme:"Family & Domestic", fame:"Famous",   style:"Regional & Genre",  subGenre:"Coming-of-Age",          gender:"F", ethnicity:"White",      pages:428,  narrativeForm:"Novel",          settingRegion:"South (Florida)",              settingEra:"Post-Civil War",         posthumous:false, repeatWinner:false },
+  { rank:62, title:"The Good Earth",                                    author:"Pearl S. Buck",         year:1932, tier:6, decade:"1930s", theme:"Family & Domestic",  fame:"Famous",   style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:357,  narrativeForm:"Novel",          settingRegion:"International (China)",        settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:63, title:"Early Autumn",                                      author:"Louis Bromfield",       year:1927, tier:6, decade:"1920s", theme:"Class & Power",      fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:264,  narrativeForm:"Novel",          settingRegion:"New England",                  settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:64, title:"Tales of the South Pacific",                        author:"James Michener",        year:1948, tier:6, decade:"1940s", theme:"War & Conflict",     fame:"Famous",   style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:326,  narrativeForm:"Linked Stories", settingRegion:"Pacific Theater",              settingEra:"World War II",           posthumous:false, repeatWinner:false },
+  { rank:65, title:"Elbow Room",                                        author:"James Alan McPherson",  year:1978, tier:6, decade:"1970s", theme:"Race & Identity",    fame:"Forgotten",style:"Realism",           subGenre:"Social Justice",         gender:"M", ethnicity:"Black",      pages:241,  narrativeForm:"Short Stories",  settingRegion:"Multiple U.S. Regions",        settingEra:"Civil Rights Era",       posthumous:false, repeatWinner:false },
+  { rank:66, title:"A Good Scent from a Strange Mountain",              author:"Robert Olen Butler",    year:1993, tier:6, decade:"1990s", theme:"War & Conflict",     fame:"Forgotten",style:"Realism",           subGenre:"Social Justice",         gender:"M", ethnicity:"White",      pages:249,  narrativeForm:"Short Stories",  settingRegion:"South (Louisiana)",            settingEra:"Post-Vietnam",           posthumous:false, repeatWinner:false },
+  { rank:67, title:"House Made of Dawn",                                author:"N. Scott Momaday",      year:1969, tier:6, decade:"1960s", theme:"Race & Identity",    fame:"Notable",  style:"Modernism",         subGenre:"Social Justice",         gender:"M", ethnicity:"Indigenous", pages:212,  narrativeForm:"Novel",          settingRegion:"Southwest",                    settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:68, title:"Night Watch",                                       author:"Jayne Anne Phillips",   year:2024, tier:6, decade:"2020s", theme:"War & Conflict",     fame:"Notable",  style:"Historical",        subGenre:"War",                    gender:"F", ethnicity:"White",      pages:289,  narrativeForm:"Novel",          settingRegion:"South / Northeast",            settingEra:"Civil War",              posthumous:false, repeatWinner:false },
+  { rank:69, title:"The Bridge of San Luis Rey",                        author:"Thornton Wilder",       year:1928, tier:6, decade:"1920s", theme:"Art & Ideas",        fame:"Famous",   style:"Modernism",         subGenre:"Experimental",           gender:"M", ethnicity:"White",      pages:148,  narrativeForm:"Novel",          settingRegion:"International (Peru)",         settingEra:"Colonial Era",           posthumous:false, repeatWinner:false },
+  { rank:70, title:"The Late George Apley",                             author:"John P. Marquand",      year:1938, tier:7, decade:"1930s", theme:"Class & Power",      fame:"Forgotten",style:"Satire & Comedy",   subGenre:"Satire & Comedy",        gender:"M", ethnicity:"White",      pages:354,  narrativeForm:"Novel",          settingRegion:"New England (Boston)",         settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:71, title:"Martin Dressler",                                   author:"Steven Millhauser",     year:1997, tier:7, decade:"1990s", theme:"Class & Power",      fame:"Forgotten",style:"Experimental",      subGenre:"Experimental",           gender:"M", ethnicity:"White",      pages:293,  narrativeForm:"Novel",          settingRegion:"Northeast (New York)",         settingEra:"Gilded Age",             posthumous:false, repeatWinner:false },
+  { rank:72, title:"One of Ours",                                       author:"Willa Cather",          year:1923, tier:7, decade:"1920s", theme:"War & Conflict",     fame:"Notable",  style:"Modernism",         subGenre:"War",                    gender:"F", ethnicity:"White",      pages:459,  narrativeForm:"Novel",          settingRegion:"Midwest / International",      settingEra:"World War I",            posthumous:false, repeatWinner:false },
+  { rank:73, title:"Laughing Boy",                                      author:"Oliver La Farge",       year:1930, tier:7, decade:"1930s", theme:"Race & Identity",    fame:"Forgotten",style:"Regional & Genre",  subGenre:"Social Justice",         gender:"M", ethnicity:"White",      pages:302,  narrativeForm:"Novel",          settingRegion:"Southwest",                    settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:74, title:"So Big",                                            author:"Edna Ferber",           year:1925, tier:7, decade:"1920s", theme:"Frontier & Place",   fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:360,  narrativeForm:"Novel",          settingRegion:"Midwest (Chicago)",            settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:75, title:"A Bell for Adano",                                  author:"John Hersey",           year:1945, tier:7, decade:"1940s", theme:"War & Conflict",     fame:"Forgotten",style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:269,  narrativeForm:"Novel",          settingRegion:"International (Italy)",        settingEra:"World War II",           posthumous:false, repeatWinner:false },
+  { rank:76, title:"The Travels of Jaimie McPheeters",                  author:"Robert Lewis Taylor",   year:1959, tier:7, decade:"1950s", theme:"Frontier & Place",   fame:"Forgotten",style:"Historical",        subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:544,  narrativeForm:"Novel",          settingRegion:"West",                         settingEra:"Gold Rush",              posthumous:false, repeatWinner:false },
+  { rank:77, title:"The Town",                                          author:"Conrad Richter",        year:1951, tier:7, decade:"1950s", theme:"Frontier & Place",   fame:"Forgotten",style:"Historical",        subGenre:"Western & Frontier",     gender:"M", ethnicity:"White",      pages:298,  narrativeForm:"Novel",          settingRegion:"Midwest (Ohio)",               settingEra:"Early America",          posthumous:false, repeatWinner:false },
+  { rank:78, title:"The Reivers",                                       author:"William Faulkner",      year:1963, tier:7, decade:"1960s", theme:"Family & Domestic",  fame:"Famous",   style:"Regional & Genre",  subGenre:"Adventure & Picaresque", gender:"M", ethnicity:"White",      pages:305,  narrativeForm:"Novel",          settingRegion:"South (Mississippi)",          settingEra:"Early 20th Century",     posthumous:false, repeatWinner:true  },
+  { rank:79, title:"The Way West",                                      author:"A.B. Guthrie Jr.",      year:1950, tier:7, decade:"1950s", theme:"Frontier & Place",   fame:"Forgotten",style:"Historical",        subGenre:"Western & Frontier",     gender:"M", ethnicity:"White",      pages:340,  narrativeForm:"Novel",          settingRegion:"West",                         settingEra:"Westward Expansion",     posthumous:false, repeatWinner:false },
+  { rank:80, title:"The Optimist's Daughter",                           author:"Eudora Welty",          year:1973, tier:7, decade:"1970s", theme:"Family & Domestic",  fame:"Notable",  style:"Regional & Genre",  subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:180,  narrativeForm:"Novel",          settingRegion:"South (Mississippi)",          settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:81, title:"A Summons to Memphis",                              author:"Peter Taylor",          year:1987, tier:7, decade:"1980s", theme:"Family & Domestic",  fame:"Forgotten",style:"Regional & Genre",  subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:209,  narrativeForm:"Novel",          settingRegion:"South (Tennessee)",            settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:82, title:"Collected Stories",                                 author:"Katherine Anne Porter", year:1966, tier:7, decade:"1960s", theme:"Family & Domestic",  fame:"Notable",  style:"Modernism",         subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:495,  narrativeForm:"Short Stories",  settingRegion:"South / International",        settingEra:"Early-Mid 20th Century", posthumous:false, repeatWinner:false },
+  { rank:83, title:"Ironweed",                                          author:"William Kennedy",       year:1984, tier:7, decade:"1980s", theme:"Class & Power",      fame:"Notable",  style:"Experimental",      subGenre:"Social Justice",         gender:"M", ethnicity:"White",      pages:227,  narrativeForm:"Novel",          settingRegion:"Northeast (Albany)",           settingEra:"Great Depression",       posthumous:false, repeatWinner:false },
+  { rank:84, title:"Andersonville",                                     author:"MacKinlay Kantor",      year:1956, tier:7, decade:"1950s", theme:"War & Conflict",     fame:"Forgotten",style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:767,  narrativeForm:"Novel",          settingRegion:"South (Georgia)",              settingEra:"Civil War",              posthumous:false, repeatWinner:false },
+  { rank:85, title:"Years of Grace",                                    author:"Margaret Ayer Barnes",  year:1931, tier:7, decade:"1930s", theme:"Family & Domestic",  fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:459,  narrativeForm:"Novel",          settingRegion:"Midwest (Chicago)",            settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:86, title:"Honey in the Horn",                                 author:"Harold L. Davis",       year:1936, tier:7, decade:"1930s", theme:"Frontier & Place",   fame:"Forgotten",style:"Regional & Genre",  subGenre:"Western & Frontier",     gender:"M", ethnicity:"White",      pages:380,  narrativeForm:"Novel",          settingRegion:"West (Oregon)",                settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:87, title:"The Able McLaughlins",                              author:"Margaret Wilson",       year:1924, tier:7, decade:"1920s", theme:"Frontier & Place",   fame:"Forgotten",style:"Regional & Genre",  subGenre:"Western & Frontier",     gender:"F", ethnicity:"White",      pages:260,  narrativeForm:"Novel",          settingRegion:"Midwest (Iowa)",               settingEra:"Post-Civil War",         posthumous:false, repeatWinner:false },
+  { rank:88, title:"Alice Adams",                                       author:"Booth Tarkington",      year:1922, tier:7, decade:"1920s", theme:"Class & Power",      fame:"Forgotten",style:"Realism",           subGenre:"Satire & Comedy",        gender:"M", ethnicity:"White",      pages:434,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Early 20th Century",     posthumous:false, repeatWinner:true  },
+  { rank:89, title:"The Magnificent Ambersons",                         author:"Booth Tarkington",      year:1919, tier:7, decade:"1910s", theme:"Class & Power",      fame:"Notable",  style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:516,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:90, title:"Lamb in His Bosom",                                 author:"Caroline Miller",       year:1934, tier:7, decade:"1930s", theme:"Frontier & Place",   fame:"Forgotten",style:"Regional & Genre",  subGenre:"Western & Frontier",     gender:"F", ethnicity:"White",      pages:324,  narrativeForm:"Novel",          settingRegion:"South (Georgia)",              settingEra:"Antebellum",             posthumous:false, repeatWinner:false },
+  { rank:91, title:"Scarlet Sister Mary",                               author:"Julia Peterkin",        year:1929, tier:7, decade:"1920s", theme:"Race & Identity",    fame:"Forgotten",style:"Regional & Genre",  subGenre:"Western & Frontier",     gender:"F", ethnicity:"White",      pages:345,  narrativeForm:"Novel",          settingRegion:"South (South Carolina)",       settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:92, title:"The Mambo Kings Play Songs of Love",                author:"Oscar Hijuelos",        year:1990, tier:7, decade:"1990s", theme:"Race & Identity",    fame:"Notable",  style:"Realism",           subGenre:"Social Justice",         gender:"M", ethnicity:"Latino",     pages:407,  narrativeForm:"Novel",          settingRegion:"Northeast (New York)",         settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:93, title:"Arrowsmith",                                        author:"Sinclair Lewis",        year:1926, tier:7, decade:"1920s", theme:"Art & Ideas",        fame:"Famous",   style:"Realism",           subGenre:"Satire & Comedy",        gender:"M", ethnicity:"White",      pages:448,  narrativeForm:"Novel",          settingRegion:"Midwest / International",      settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:94, title:"Journey in the Dark",                               author:"Martin Flavin",         year:1944, tier:7, decade:"1940s", theme:"Class & Power",      fame:"Forgotten",style:"Realism",           subGenre:"Satire & Comedy",        gender:"M", ethnicity:"White",      pages:582,  narrativeForm:"Novel",          settingRegion:"Midwest",                      settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:95, title:"His Family",                                        author:"Ernest Poole",          year:1918, tier:7, decade:"1910s", theme:"Family & Domestic",  fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"M", ethnicity:"White",      pages:312,  narrativeForm:"Novel",          settingRegion:"Northeast (New York)",         settingEra:"Early 20th Century",     posthumous:false, repeatWinner:false },
+  { rank:96, title:"A Fable",                                           author:"William Faulkner",      year:1955, tier:7, decade:"1950s", theme:"War & Conflict",     fame:"Notable",  style:"Modernism",         subGenre:"Experimental",           gender:"M", ethnicity:"White",      pages:437,  narrativeForm:"Novel",          settingRegion:"International (France)",       settingEra:"World War I",            posthumous:false, repeatWinner:true  },
+  { rank:97, title:"Guard of Honor",                                    author:"James Gould Cozzens",   year:1949, tier:7, decade:"1940s", theme:"War & Conflict",     fame:"Forgotten",style:"Historical",        subGenre:"War",                    gender:"M", ethnicity:"White",      pages:631,  narrativeForm:"Novel",          settingRegion:"South (Florida)",              settingEra:"World War II",           posthumous:false, repeatWinner:false },
+  { rank:98, title:"In This Our Life",                                  author:"Ellen Glasgow",         year:1942, tier:7, decade:"1940s", theme:"Family & Domestic",  fame:"Forgotten",style:"Realism",           subGenre:"Family & Domestic",      gender:"F", ethnicity:"White",      pages:467,  narrativeForm:"Novel",          settingRegion:"South (Virginia)",             settingEra:"Mid-20th Century",       posthumous:false, repeatWinner:false },
+  { rank:99, title:"The Store",                                         author:"T.S. Stribling",        year:1933, tier:7, decade:"1930s", theme:"Class & Power",      fame:"Forgotten",style:"Realism",           subGenre:"Historical",             gender:"M", ethnicity:"White",      pages:571,  narrativeForm:"Novel",          settingRegion:"South (Alabama)",              settingEra:"Reconstruction",         posthumous:false, repeatWinner:false },
+];
+
+const TIER_LABELS = {
+  1: { name: "Blew My Mind. Might Blow Yours Too.",      rangeStr: "Ranks 1\u20137"   },
+  2: { name: "Superb. You Should Read Them.",            rangeStr: "Ranks 8\u201321"  },
+  3: { name: "Excellent. Would Recommend.",              rangeStr: "Ranks 22\u201335" },
+  4: { name: "Good. Worth a Read.",                      rangeStr: "Ranks 36\u201342" },
+  5: { name: "Lovely at Times. Not So Lovely at Others.",rangeStr: "Ranks 43\u201355" },
+  6: { name: "Not Terrible! Not Good!",                  rangeStr: "Ranks 56\u201369" },
+  7: { name: "Save Yourself. Life is Too Short.",        rangeStr: "Ranks 70\u201399" },
+};
+
+const state = {
+  tierView: true,
+  filterOpen: false,
+  activeFilters: {
+    theme:    new Set(),
+    style:    new Set(),
+    subGenre: new Set(),
+    decade:   new Set(),
+    fame:     new Set(),
+  }
+};
+
+const TIER_COLORS = { 1:'#1B3A5C', 2:'#C43030', 3:'#D4A017', 4:'#2D6A4F', 5:'#C65D21', 6:'#5B7B9A', 7:'#8C8279' };
+
+function getTierColor(tier) { return TIER_COLORS[tier] || '#8C8279'; }
+
+function getFontSize(rank) {
+  const min = 0.85, max = 1.35;
+  const scale = max - (Math.log(rank) / Math.log(99)) * (max - min);
+  return scale.toFixed(3) + 'rem';
+}
+
+function getFilteredBooks() {
+  const f = state.activeFilters;
+  return BOOKS.filter(b => {
+    if (f.theme.size    && !f.theme.has(b.theme))       return false;
+    if (f.style.size    && !f.style.has(b.style))       return false;
+    if (f.subGenre.size && !f.subGenre.has(b.subGenre)) return false;
+    if (f.decade.size   && !f.decade.has(b.decade))     return false;
+    if (f.fame.size     && !f.fame.has(b.fame))         return false;
+    return true;
+  });
+}
+
+function getActiveFilterCount() {
+  const f = state.activeFilters;
+  return [f.theme, f.style, f.subGenre, f.decade, f.fame].filter(s => s.size > 0).length;
+}
+
+function esc(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function renderBookItem(book) {
+  const color = getTierColor(book.tier);
+  return `
+    <article class="book-item" role="listitem" data-rank="${book.rank}" style="border-left-color:${color}">
+      <span class="book-rank" style="background:${color}">${book.rank}</span>
+      <div class="book-body">
+        <h2 class="book-title" style="font-size:${getFontSize(book.rank)}">${esc(book.title)}</h2>
+        <p class="book-meta">
+          <span class="book-author">${esc(book.author)}</span>
+          <span class="book-year">&middot; ${book.year}</span>
+        </p>
+      </div>
+    </article>`;
+}
+
+function renderTierHeader(tier) {
+  const t = TIER_LABELS[tier];
+  const color = getTierColor(tier);
+  return `
+    <div class="tier-header" role="heading" aria-level="2">
+      <span class="tier-label" style="background:${color}">Tier ${tier}</span>
+      <span class="tier-name">${esc(t.name)}</span>
+      <span class="tier-ranks">${t.rangeStr}</span>
+    </div>`;
+}
+
+function render() {
+  const container = document.getElementById('list-container');
+  const books = getFilteredBooks();
+
+  if (books.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <p>No books match your current filters.</p>
+        <button onclick="clearFilters()">Clear Filters</button>
+      </div>`;
+    updateToolbar(0);
+    return;
+  }
+
+  let html = '';
+
+  if (state.tierView) {
+    const byTier = {};
+    books.forEach(b => {
+      if (!byTier[b.tier]) byTier[b.tier] = [];
+      byTier[b.tier].push(b);
+    });
+    Object.keys(byTier).sort((a,b) => a - b).forEach(tier => {
+      html += renderTierHeader(Number(tier));
+      byTier[tier].forEach(b => { html += renderBookItem(b); });
+    });
+  } else {
+    books.forEach(b => { html += renderBookItem(b); });
+  }
+
+  container.innerHTML = html;
+  updateToolbar(books.length);
+}
+
+function updateToolbar(count) {
+  const fc = getActiveFilterCount();
+  const filterBtn = document.getElementById('btn-filter');
+  filterBtn.textContent = fc > 0 ? `Filter (${fc})` : 'Filter';
+  filterBtn.setAttribute('aria-pressed', fc > 0 ? 'true' : 'false');
+}
+
+function clearFilters() {
+  Object.values(state.activeFilters).forEach(s => s.clear());
+  document.querySelectorAll('.filter-checkbox').forEach(cb => { cb.checked = false; });
+  render();
+}
+
+function openDrawer() {
+  state.filterOpen = true;
+  const drawer = document.getElementById('filter-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  drawer.classList.add('is-open');
+  overlay.classList.add('is-visible');
+  drawer.setAttribute('aria-hidden', 'false');
+  document.getElementById('btn-filter').setAttribute('aria-expanded', 'true');
+}
+
+function closeDrawer() {
+  state.filterOpen = false;
+  const drawer = document.getElementById('filter-drawer');
+  const overlay = document.getElementById('drawer-overlay');
+  drawer.classList.remove('is-open');
+  overlay.classList.remove('is-visible');
+  drawer.setAttribute('aria-hidden', 'true');
+  document.getElementById('btn-filter').setAttribute('aria-expanded', 'false');
+}
+
+function buildFilterDrawer() {
+  const filterDefs = [
+    { key: 'theme',    label: 'Theme',     getter: b => b.theme    },
+    { key: 'style',    label: 'Style',     getter: b => b.style    },
+    { key: 'subGenre', label: 'Sub-Genre', getter: b => b.subGenre },
+    { key: 'decade',   label: 'Decade',    getter: b => b.decade   },
+    { key: 'fame',     label: 'Fame Level',getter: b => b.fame     },
+  ];
+
+  const body = document.getElementById('drawer-body');
+  let html = '';
+
+  filterDefs.forEach(def => {
+    const values = [...new Set(BOOKS.map(def.getter))].sort((a, b) => {
+      if (def.key === 'decade') return a.localeCompare(b);
+      return a.localeCompare(b);
+    });
+
+    html += `<fieldset class="filter-group"><legend>${def.label}</legend>`;
+    values.forEach(val => {
+      const count = BOOKS.filter(b => def.getter(b) === val).length;
+      const id = `cb-${def.key}-${val.replace(/[^a-z0-9]/gi, '_')}`;
+      html += `
+        <label class="filter-option" for="${id}">
+          <input type="checkbox" class="filter-checkbox" id="${id}"
+            data-key="${def.key}" data-value="${esc(val)}">
+          <span class="filter-label-text">${esc(val)}</span>
+          <span class="filter-label-count">${count}</span>
+        </label>`;
+    });
+    html += `</fieldset>`;
+  });
+
+  body.innerHTML = html;
+
+  body.addEventListener('change', e => {
+    if (!e.target.classList.contains('filter-checkbox')) return;
+    const key = e.target.dataset.key;
+    const val = e.target.dataset.value;
+    if (e.target.checked) {
+      state.activeFilters[key].add(val);
+    } else {
+      state.activeFilters[key].delete(val);
+    }
+    render();
+  });
+}
+
+/* ── CHART ENGINE ─────────────────────────────────────── */
+const CH = {
+  navy:   '#1B3A5C',
+  red:    '#C43030',
+  amber:  '#D4A017',
+  green:  '#2D6A4F',
+  orange: '#C65D21',
+  steel:  '#5B7B9A',
+  grey7:  '#8C8279',
+  text:   '#1A1A1A',
+  muted:  '#6B6B6B',
+  faint:  '#E0DDDA',
+  bg:     '#EFEDE9',
+  white:  '#F7F5F2',
+  sans:   "'Space Grotesk', sans-serif",
+  serif:  "'Source Serif 4', serif",
+  ns:     'http://www.w3.org/2000/svg',
+};
+const TIER_DOT_COLORS = [null,'#1B3A5C','#C43030','#D4A017','#2D6A4F','#C65D21','#5B7B9A','#8C8279'];
+
+/* ── SVG HELPERS ─────────────────────────────────────── */
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(CH.ns, tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+  return el;
+}
+function makeSVG(w, h) {
+  return svgEl('svg', { viewBox: `0 0 ${w} ${h}`, width: '100%', xmlns: CH.ns });
+}
+function svgText(x, y, text, opts = {}) {
+  const el = svgEl('text', {
+    x, y,
+    fill: opts.fill || CH.muted,
+    'font-family': CH.sans,
+    'font-size': opts.size || 11,
+    'font-weight': opts.bold ? '700' : '400',
+    'font-style': opts.italic ? 'italic' : 'normal',
+    'text-anchor': opts.anchor || 'start',
+    'dominant-baseline': opts.baseline || 'auto',
+  });
+  if (opts.transform) el.setAttribute('transform', opts.transform);
+  el.textContent = text;
+  return el;
+}
+function svgLine(x1, y1, x2, y2, stroke, width = 1) {
+  return svgEl('line', { x1, y1, x2, y2, stroke, 'stroke-width': width });
+}
+function svgRect(x, y, w, h, fill, opts = {}) {
+  const attrs = { x, y, width: w, height: h, fill };
+  if (opts.rx) attrs.rx = opts.rx;
+  return svgEl('rect', attrs);
+}
+function svgCircle(cx, cy, r, fill, stroke, sw = 1.5) {
+  return svgEl('circle', { cx, cy, r, fill, stroke, 'stroke-width': sw });
+}
+function svgPath(d, fill, stroke, sw = 1) {
+  return svgEl('path', { d, fill: fill || 'none', stroke: stroke || 'none', 'stroke-width': sw });
+}
+
+/* ── TOOLTIP ─────────────────────────────────────────── */
+let _tip = null;
+function getTip() {
+  if (!_tip) {
+    _tip = document.createElement('div');
+    _tip.className = 'chart-tooltip';
+    document.body.appendChild(_tip);
+  }
+  return _tip;
+}
+function showTip(x, y, html) {
+  const t = getTip();
+  t.innerHTML = html;
+  t.style.display = 'block';
+  t.style.left = (x + 14) + 'px';
+  t.style.top  = (y - 10) + 'px';
+}
+function hideTip() {
+  const t = getTip();
+  t.style.display = 'none';
+}
+function addTip(el, html) {
+  el.addEventListener('mousemove', e => showTip(e.clientX, e.clientY, html));
+  el.addEventListener('mouseleave', hideTip);
+  el.style.cursor = 'default';
+}
+
+/* ── CHART 1: Scatter — Year vs Rank ─────────────────── */
+function buildChart1() {
+  const W=820, H=480, lm=52, rm=30, tm=30, bm=60;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const svg = makeSVG(W, H);
+
+  const years = BOOKS.map(b=>b.year);
+  const minYr = Math.min(...years) - 5;
+  const maxYr = Math.max(...years) + 5;
+  const xScale = yr => lm + (yr - minYr) / (maxYr - minYr) * pw;
+  // Y inverted: rank 1 at top, rank 99 at bottom
+  const yScale = rank => tm + (rank - 1) / 98 * ph;
+
+  // axis lines
+  svg.appendChild(svgLine(lm, tm, lm, tm+ph, CH.faint, 1));
+  svg.appendChild(svgLine(lm, tm+ph, lm+pw, tm+ph, CH.faint, 1));
+
+  // Y axis ticks + labels
+  [1,25,50,75,99].forEach(r => {
+    const y = yScale(r);
+    svg.appendChild(svgLine(lm-4, y, lm, y, CH.faint, 1));
+    svg.appendChild(svgText(lm-6, y, r===1?'#1 (Best)':`#${r}`, { anchor:'end', size:9, fill:CH.muted, baseline:'middle' }));
+    svg.appendChild(svgLine(lm, y, lm+pw, y, CH.faint, 0.5));
+  });
+  svg.appendChild(svgText(lm-44, tm+ph/2, '← Better Ranked', { anchor:'middle', size:9, fill:CH.muted, transform:`rotate(-90,${lm-38},${tm+ph/2})` }));
+
+  // X axis ticks
+  const decades = [];
+  for (let yr = 1920; yr <= 2020; yr += 10) decades.push(yr);
+  decades.forEach(yr => {
+    const x = xScale(yr);
+    svg.appendChild(svgLine(x, tm+ph, x, tm+ph+4, CH.faint, 1));
+    svg.appendChild(svgText(x, tm+ph+14, yr, { anchor:'middle', size:9, fill:CH.muted }));
+  });
+
+  // regression line (y = inverted rank = 100-rank)
+  const n = BOOKS.length;
+  let sx=0, sy=0, sxy=0, sxx=0;
+  BOOKS.forEach(b => {
+    const yr = b.year, rv = 100 - b.rank;
+    sx += yr; sy += rv; sxy += yr*rv; sxx += yr*yr;
+  });
+  const slope = (n*sxy - sx*sy) / (n*sxx - sx*sx);
+  const intercept = (sy - slope*sx) / n;
+  const rxMin = minYr, rxMax = maxYr;
+  const ryMin = slope*rxMin + intercept, ryMax = slope*rxMax + intercept;
+  // convert back to rank: rank = 100 - rv
+  const trendLine = svgEl('line', {
+    x1: xScale(rxMin), y1: yScale(100 - ryMin),
+    x2: xScale(rxMax), y2: yScale(100 - ryMax),
+    stroke: CH.muted, 'stroke-width': 1.5, 'stroke-dasharray': '6,4'
+  });
+  svg.appendChild(trendLine);
+
+  // dots
+  BOOKS.forEach(b => {
+    const cx = xScale(b.year), cy = yScale(b.rank);
+    const dot = svgCircle(cx, cy, 5, TIER_DOT_COLORS[b.tier], '#fff', 1);
+    dot.setAttribute('opacity', '0.82');
+    addTip(dot, `<strong>${b.title}</strong><br>${b.author} · ${b.year}<br>Rank #${b.rank} · Tier ${b.tier}`);
+    svg.appendChild(dot);
+  });
+
+  // legend (tiers)
+  const legX = lm + pw - 180, legY = tm + 6;
+  TIER_DOT_COLORS.slice(1).forEach((c, i) => {
+    const lx = legX + (i % 4) * 44, ly = legY + Math.floor(i / 4) * 16;
+    svg.appendChild(svgCircle(lx, ly, 4, c, '#fff', 1));
+    svg.appendChild(svgText(lx + 7, ly, `T${i+1}`, { size:8.5, fill:CH.muted, baseline:'middle' }));
+  });
+
+  document.getElementById('chart-1').appendChild(svg);
+  document.getElementById('chart-1').insertAdjacentHTML('beforeend',
+    `<p class="chart-annotation">Each dot is one book, colored by tier. Dashed line shows the trend. Hover for details.</p>`);
+}
+
+/* ── CHART 2: Stacked Bars — Forgetting Curve ─────────── */
+function buildChart2() {
+  const data = [
+    { decade:'1910s', Famous:0, Notable:1, Forgotten:1 },
+    { decade:'1920s', Famous:2, Notable:2, Forgotten:5 },
+    { decade:'1930s', Famous:1, Notable:2, Forgotten:7 },
+    { decade:'1940s', Famous:2, Notable:1, Forgotten:5 },
+    { decade:'1950s', Famous:3, Notable:1, Forgotten:4 },
+    { decade:'1960s', Famous:2, Notable:4, Forgotten:3 },
+    { decade:'1970s', Famous:2, Notable:3, Forgotten:2 },
+    { decade:'1980s', Famous:5, Notable:3, Forgotten:2 },
+    { decade:'1990s', Famous:3, Notable:5, Forgotten:2 },
+    { decade:'2000s', Famous:4, Notable:6, Forgotten:0 },
+    { decade:'2010s', Famous:4, Notable:5, Forgotten:0 },
+    { decade:'2020s', Famous:2, Notable:5, Forgotten:0 },
+  ];
+  const W=760, H=320, lm=48, rm=20, tm=30, bm=55;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const maxTotal = Math.max(...data.map(d=>d.Famous+d.Notable+d.Forgotten));
+  const svg = makeSVG(W, H);
+  const n = data.length;
+  const bw = pw/n * 0.65;
+  const gap = pw/n;
+  const layers = ['Famous','Notable','Forgotten'];
+  const lColors = [CH.navy, CH.amber, CH.grey7];
+
+  // Y axis
+  [0,2,4,6,8,10].forEach(v => {
+    const y = tm + ph - (v / maxTotal) * ph;
+    svg.appendChild(svgLine(lm-4, y, lm+pw, y, CH.faint, v===0?1:0.5));
+    svg.appendChild(svgText(lm-6, y, v, { anchor:'end', size:9, fill:CH.muted, baseline:'middle' }));
+  });
+
+  data.forEach((d, i) => {
+    const cx = lm + i*gap + gap/2;
+    const x = cx - bw/2;
+    let yBottom = tm + ph;
+    layers.forEach((layer, li) => {
+      const count = d[layer];
+      if (!count) return;
+      const barH = (count / maxTotal) * ph;
+      const y = yBottom - barH;
+      const rect = svgRect(x, y, bw, barH, lColors[li]);
+      addTip(rect, `<strong>${d.decade}</strong><br>${layer}: ${count} book${count!==1?'s':''}`);
+      svg.appendChild(rect);
+      // count label if segment tall enough
+      if (barH > 16) {
+        svg.appendChild(svgText(cx, y + barH/2, count, { anchor:'middle', baseline:'middle', size:9.5, fill:'#fff', bold:true }));
+      }
+      yBottom -= barH;
+    });
+    // decade label
+    const lbl = svgText(cx, tm+ph+14, d.decade, { anchor:'end', size:9.5, fill:CH.muted });
+    lbl.setAttribute('transform', `rotate(-40,${cx},${tm+ph+14})`);
+    svg.appendChild(lbl);
+  });
+
+  // legend
+  const legY = tm - 20;
+  layers.forEach((l, i) => {
+    const lx = lm + pw - 220 + i*78;
+    svg.appendChild(svgRect(lx, legY-7, 10, 10, lColors[i]));
+    svg.appendChild(svgText(lx+13, legY, l, { size:9.5, fill:CH.muted, baseline:'middle' }));
+  });
+
+  document.getElementById('chart-2').appendChild(svg);
+}
+
+/* ── CHART 3: Stacked Bars — Whiteness ─────────────────── */
+function buildChart3() {
+  const data = [
+    { decade:'1910s', White:2,  NonWhite:0 },
+    { decade:'1920s', White:9,  NonWhite:0 },
+    { decade:'1930s', White:10, NonWhite:0 },
+    { decade:'1940s', White:8,  NonWhite:0 },
+    { decade:'1950s', White:8,  NonWhite:0 },
+    { decade:'1960s', White:8,  NonWhite:1 },
+    { decade:'1970s', White:6,  NonWhite:1 },
+    { decade:'1980s', White:8,  NonWhite:2 },
+    { decade:'1990s', White:9,  NonWhite:1 },
+    { decade:'2000s', White:7,  NonWhite:3 },
+    { decade:'2010s', White:7,  NonWhite:2 },
+    { decade:'2020s', White:3,  NonWhite:4 },
+  ];
+  const W=760, H=340, lm=48, rm=20, tm=40, bm=55;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const maxTotal = 10;
+  const svg = makeSVG(W, H);
+  const n = data.length;
+  const bw = pw/n * 0.65;
+  const gap = pw/n;
+
+  // Y axis
+  [0,2,4,6,8,10].forEach(v => {
+    const y = tm + ph - (v / maxTotal) * ph;
+    svg.appendChild(svgLine(lm-4, y, lm+pw, y, CH.faint, v===0?1:0.5));
+    svg.appendChild(svgText(lm-6, y, v, { anchor:'end', size:9, fill:CH.muted, baseline:'middle' }));
+  });
+
+  data.forEach((d, i) => {
+    const cx = lm + i*gap + gap/2;
+    const x = cx - bw/2;
+    const total = d.White + d.NonWhite;
+    // White bar (bottom)
+    const whiteH = (d.White / maxTotal) * ph;
+    const whiteY = tm + ph - whiteH;
+    const wr = svgRect(x, whiteY, bw, whiteH, CH.steel);
+    addTip(wr, `<strong>${d.decade}</strong><br>White: ${d.White}<br>Non-White: ${d.NonWhite}`);
+    svg.appendChild(wr);
+    if (whiteH > 16) svg.appendChild(svgText(cx, whiteY+whiteH/2, d.White, { anchor:'middle', baseline:'middle', size:9.5, fill:'#fff', bold:true }));
+
+    // NonWhite bar (top)
+    if (d.NonWhite > 0) {
+      const nwH = (d.NonWhite / maxTotal) * ph;
+      const nwY = whiteY - nwH;
+      const nr = svgRect(x, nwY, bw, nwH, CH.green);
+      addTip(nr, `<strong>${d.decade}</strong><br>White: ${d.White}<br>Non-White: ${d.NonWhite}`);
+      svg.appendChild(nr);
+      if (nwH > 14) svg.appendChild(svgText(cx, nwY+nwH/2, d.NonWhite, { anchor:'middle', baseline:'middle', size:9.5, fill:'#fff', bold:true }));
+
+      // annotation for 1960s
+      if (d.decade === '1960s') {
+        const annX = cx;
+        const annY = nwY - 12;
+        svg.appendChild(svgLine(cx, nwY, cx, annY - 16, CH.red, 1));
+        svg.appendChild(svgText(cx, annY - 18, '1969: Momaday', { anchor:'middle', size:9, fill:CH.red, bold:true }));
+        svg.appendChild(svgText(cx, annY - 7, 'breaks a 51-year streak', { anchor:'middle', size:8.5, fill:CH.red }));
+      }
+    }
+
+    // decade label
+    const lbl = svgText(cx, tm+ph+14, d.decade, { anchor:'end', size:9.5, fill:CH.muted });
+    lbl.setAttribute('transform', `rotate(-40,${cx},${tm+ph+14})`);
+    svg.appendChild(lbl);
+  });
+
+  // legend
+  const legY = tm - 24;
+  [{label:'White', color:CH.steel}, {label:'Non-White', color:CH.green}].forEach((l, i) => {
+    const lx = lm + pw - 160 + i*80;
+    svg.appendChild(svgRect(lx, legY-7, 10, 10, l.color));
+    svg.appendChild(svgText(lx+13, legY, l.label, { size:9.5, fill:CH.muted, baseline:'middle' }));
+  });
+
+  document.getElementById('chart-3').appendChild(svg);
+}
+
+/* ── CHART 4: Comparison Bars — Non-White vs White ─────── */
+function buildChart4() {
+  const rows = [
+    { label:'Non-White Authors', sub:'14 books', avgRank:33, color:CH.green },
+    { label:'White Authors',     sub:'85 books', avgRank:52, color:CH.steel },
+  ];
+  const W=680, H=160, lm=190, rm=60, tm=20, bm=60;
+  const pw=W-lm-rm, barH=40, gap=28;
+  const svg = makeSVG(W, H);
+
+  rows.forEach((d, i) => {
+    const score = 100 - d.avgRank;
+    const bw = score / 100 * pw;
+    const y = tm + i*(barH+gap);
+    const rect = svgRect(lm, y, bw, barH, d.color);
+    addTip(rect, `${d.label}<br>${d.sub} · avg rank ${d.avgRank}`);
+    svg.appendChild(rect);
+    svg.appendChild(svgText(lm-8, y+barH/2, `${d.label}`, { anchor:'end', fill:CH.text, size:11.5, baseline:'middle', bold:true }));
+    svg.appendChild(svgText(lm-8, y+barH/2+14, d.sub, { anchor:'end', fill:CH.muted, size:9.5 }));
+    svg.appendChild(svgText(lm+bw+7, y+barH/2, `avg rank ${d.avgRank}`, { fill:CH.muted, size:10, baseline:'middle' }));
+  });
+
+  svg.appendChild(svgText(lm, tm+2*(barH+gap)+8, 'Longer bar = higher average rank (better).', { size:9, fill:CH.muted, italic:true }));
+  document.getElementById('chart-4').appendChild(svg);
+  document.getElementById('chart-4').insertAdjacentHTML('beforeend',
+    `<p class="chart-annotation">Non-white breakdown: Black (7 books, avg 25.9), Latino (3, avg 42.7), Indigenous (2, avg 60.0), Asian (1, rank 22), South Asian (1, rank 59).</p>`);
+}
+
+/* ── CHART 5: Grouped Bars — Gender by Decade ─────────── */
+function buildChart5() {
+  const data = [
+    { decade:'1910s', Male:2, Female:0 },
+    { decade:'1920s', Male:4, Female:5 },
+    { decade:'1930s', Male:4, Female:6 },
+    { decade:'1940s', Male:7, Female:1 },
+    { decade:'1950s', Male:8, Female:0 },
+    { decade:'1960s', Male:6, Female:3 },
+    { decade:'1970s', Male:5, Female:2 },
+    { decade:'1980s', Male:6, Female:4 },
+    { decade:'1990s', Male:7, Female:3 },
+    { decade:'2000s', Male:6, Female:4 },
+    { decade:'2010s', Male:7, Female:2 },
+    { decade:'2020s', Male:4, Female:3 },
+  ];
+  const W=760, H=300, lm=48, rm=20, tm=40, bm=55;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const maxVal = 10;
+  const svg = makeSVG(W, H);
+  const n = data.length;
+  const slotW = pw / n;
+  const groupW = slotW * 0.75;
+  const bw = groupW / 2;
+
+  // Y axis
+  [0,2,4,6,8].forEach(v => {
+    const y = tm + ph - (v / maxVal) * ph;
+    svg.appendChild(svgLine(lm-4, y, lm+pw, y, CH.faint, v===0?1:0.5));
+    svg.appendChild(svgText(lm-6, y, v, { anchor:'end', size:9, fill:CH.muted, baseline:'middle' }));
+  });
+
+  data.forEach((d, i) => {
+    const slotX = lm + i*slotW + slotW/2 - groupW/2;
+
+    // Male bar
+    if (d.Male > 0) {
+      const bh = (d.Male/maxVal)*ph;
+      const by = tm+ph-bh;
+      const mr = svgRect(slotX, by, bw-1, bh, CH.navy);
+      addTip(mr, `<strong>${d.decade}</strong><br>Male: ${d.Male}`);
+      svg.appendChild(mr);
+      if (bh > 16) svg.appendChild(svgText(slotX+bw/2-0.5, by+bh/2, d.Male, { anchor:'middle', baseline:'middle', size:9, fill:'#fff', bold:true }));
+    }
+
+    // Female bar
+    if (d.Female > 0) {
+      const bh = (d.Female/maxVal)*ph;
+      const by = tm+ph-bh;
+      const fr = svgRect(slotX+bw+1, by, bw-1, bh, CH.red);
+      addTip(fr, `<strong>${d.decade}</strong><br>Female: ${d.Female}`);
+      svg.appendChild(fr);
+      if (bh > 16) svg.appendChild(svgText(slotX+bw+bw/2+1, by+bh/2, d.Female, { anchor:'middle', baseline:'middle', size:9, fill:'#fff', bold:true }));
+    }
+
+    // decade label
+    const cx = slotX + groupW/2;
+    const lbl = svgText(cx, tm+ph+14, d.decade, { anchor:'end', size:9.5, fill:CH.muted });
+    lbl.setAttribute('transform', `rotate(-40,${cx},${tm+ph+14})`);
+    svg.appendChild(lbl);
+  });
+
+  // legend
+  const legY = tm - 22;
+  [{label:'Male', color:CH.navy},{label:'Female', color:CH.red}].forEach((l, i) => {
+    const lx = lm + pw - 100 + i*52;
+    svg.appendChild(svgRect(lx, legY-7, 10, 10, l.color));
+    svg.appendChild(svgText(lx+13, legY, l.label, { size:9.5, fill:CH.muted, baseline:'middle' }));
+  });
+
+  document.getElementById('chart-5').appendChild(svg);
+}
+
+/* ── CHART 6: Horizontal Bars — Style Rankings ─────────── */
+function buildChart6() {
+  const data = [
+    { style:'Experimental',    n:12, avgRank:33.3 },
+    { style:'Historical',      n:24, avgRank:47.4 },
+    { style:'Realism',         n:41, avgRank:48.6 },
+    { style:'Satire & Comedy', n:5,  avgRank:48.6 },
+    { style:'Regional & Genre',n:11, avgRank:67.9 },
+    { style:'Modernism',       n:6,  avgRank:71.3 },
+  ];
+  const W=680, H=290, lm=155, rm=90, tm=20, bm=30;
+  const pw=W-lm-rm, barH=30, gap=14;
+  const svg = makeSVG(W, H);
+
+  data.forEach((d, i) => {
+    const score = 100 - d.avgRank;
+    const bw = score / 100 * pw;
+    const y = tm + i*(barH+gap);
+    const rect = svgRect(lm, y, bw, barH, CH.navy);
+    addTip(rect, `<strong>${d.style}</strong><br>n=${d.n} books · avg rank ${d.avgRank}`);
+    svg.appendChild(rect);
+    svg.appendChild(svgText(lm-8, y+barH/2, d.style, { anchor:'end', fill:CH.text, size:11, baseline:'middle' }));
+    svg.appendChild(svgText(lm+bw+6, y+barH/2, `avg rank ${d.avgRank} · n=${d.n}`, { fill:CH.muted, size:9.5, baseline:'middle' }));
+  });
+
+  svg.appendChild(svgText(lm, tm + data.length*(barH+gap) + 8, 'Longer bar = better average rank. Only styles with 3+ books shown.', { size:9, fill:CH.muted, italic:true }));
+  document.getElementById('chart-6').appendChild(svg);
+}
+
+/* ── CHART 7: Donut — Regional Settings ─────────────── */
+function buildChart7() {
+  // Group BOOKS by region and validate
+  const regionRules = [
+    { name:'South',         test: r => /south|appalachia|georgia|mississippi|alabama|tennessee|louisiana|new orleans|south carolina/i.test(r) && !/northeast|international/i.test(r) },
+    { name:'International', test: r => /international|pacific theater|europe|korea|vietnam|russia|china|peru|italy|france|london/i.test(r) },
+    { name:'Northeast',     test: r => /northeast|new york|albany|gettysburg|mid-atlantic|washington d\.c\.|washington dc/i.test(r) },
+    { name:'Midwest',       test: r => /midwest|chicago|ohio|iowa|plains/i.test(r) },
+    { name:'West',          test: r => /west|southwest|oregon|caribbean/i.test(r) && !/northeast/i.test(r) },
+    { name:'New England',   test: r => /new england/i.test(r) },
+  ];
+  const counts = { South:0, International:0, Northeast:0, Midwest:0, West:0, 'New England':0, 'Multiple/Other':0 };
+  BOOKS.forEach(b => {
+    const r = b.settingRegion || '';
+    let matched = false;
+    for (const rule of regionRules) {
+      if (rule.test(r)) { counts[rule.name]++; matched = true; break; }
+    }
+    if (!matched) counts['Multiple/Other']++;
+  });
+  const total = Object.values(counts).reduce((a,b)=>a+b,0);
+  if (total !== 99) console.warn(`Chart 7: region counts sum to ${total}, expected 99. Check grouping logic.`);
+
+  const slices = [
+    { name:'South',          color:CH.red    },
+    { name:'Northeast',      color:CH.navy   },
+    { name:'Midwest',        color:CH.amber  },
+    { name:'International',  color:CH.steel  },
+    { name:'West',           color:CH.orange },
+    { name:'New England',    color:CH.green  },
+    { name:'Multiple/Other', color:CH.grey7  },
+  ].map(s => ({ ...s, count: counts[s.name] || 0 })).filter(s => s.count > 0);
+
+  const W=680, H=340, cx=220, cy=170, outerR=140, innerR=70;
+  const svg = makeSVG(W, H);
+
+  let startAngle = -Math.PI/2;
+  slices.forEach(s => {
+    const pct = s.count / total;
+    const angle = pct * 2 * Math.PI;
+    const endAngle = startAngle + angle;
+    const x1 = cx + outerR*Math.cos(startAngle);
+    const y1 = cy + outerR*Math.sin(startAngle);
+    const x2 = cx + outerR*Math.cos(endAngle);
+    const y2 = cy + outerR*Math.sin(endAngle);
+    const ix1 = cx + innerR*Math.cos(endAngle);
+    const iy1 = cy + innerR*Math.sin(endAngle);
+    const ix2 = cx + innerR*Math.cos(startAngle);
+    const iy2 = cy + innerR*Math.sin(startAngle);
+    const large = angle > Math.PI ? 1 : 0;
+    const d = `M ${x1} ${y1} A ${outerR} ${outerR} 0 ${large} 1 ${x2} ${y2} L ${ix1} ${iy1} A ${innerR} ${innerR} 0 ${large} 0 ${ix2} ${iy2} Z`;
+    const path = svgPath(d, s.color, '#F7F5F2', 1.5);
+    addTip(path, `<strong>${s.name}</strong><br>${s.count} books · ${Math.round(pct*100)}%`);
+    svg.appendChild(path);
+
+    // label line for larger slices
+    if (pct > 0.05) {
+      const midAngle = startAngle + angle/2;
+      const lx = cx + (outerR+20)*Math.cos(midAngle);
+      const ly = cy + (outerR+20)*Math.sin(midAngle);
+      svg.appendChild(svgText(lx, ly, `${s.name} (${s.count})`, {
+        anchor: lx < cx ? 'end' : 'start',
+        size: 9.5, fill: CH.text, baseline: 'middle'
+      }));
+    }
+    startAngle = endAngle;
+  });
+
+  // center label
+  svg.appendChild(svgText(cx, cy-6, '99', { anchor:'middle', size:22, fill:CH.text, bold:true, baseline:'middle' }));
+  svg.appendChild(svgText(cx, cy+14, 'books', { anchor:'middle', size:10, fill:CH.muted, baseline:'middle' }));
+
+  // Legend (right side)
+  const legX = 400, legY = 60;
+  slices.forEach((s, i) => {
+    const ly = legY + i*26;
+    svg.appendChild(svgRect(legX, ly-7, 12, 12, s.color));
+    svg.appendChild(svgText(legX+16, ly, `${s.name}: ${s.count}`, { size:10.5, fill:CH.text, baseline:'middle' }));
+    svg.appendChild(svgText(legX+16, ly+12, `${Math.round(s.count/total*100)}% of all winners`, { size:8.5, fill:CH.muted, baseline:'middle' }));
+  });
+
+  document.getElementById('chart-7').appendChild(svg);
+}
+
+/* ── CHART 8: Dumbbell — Repeat Winners ─────────────── */
+function buildChart8() {
+  const MIN_SEP = 22;
+  // Sort by best rank ascending (best = lowest rank number)
+  const authors = [
+    { author:'Barbara Kingsolver', single:true, books:[
+        { title:'Demon Copperhead', rank:1, year:2023 }
+    ], note:'First win not in ranked dataset.' },
+    { author:'Colson Whitehead', books:[
+        { title:'The Underground Railroad', rank:5,  year:2017 },
+        { title:'The Nickel Boys',          rank:21, year:2020 },
+    ]},
+    { author:'John Updike', books:[
+        { title:'Rabbit is Rich',  rank:29, year:1982 },
+        { title:'Rabbit at Rest',  rank:28, year:1991 },
+    ]},
+    { author:'William Faulkner', books:[
+        { title:'A Fable',      rank:96, year:1955 },
+        { title:'The Reivers',  rank:78, year:1963 },
+    ]},
+    { author:'Booth Tarkington', books:[
+        { title:'The Magnificent Ambersons', rank:89, year:1919 },
+        { title:'Alice Adams',               rank:88, year:1922 },
+    ]},
+  ];
+
+  const W=760, H=280, lm=155, rm=20, tm=30, bm=48;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const n = authors.length;
+  const yStep = ph / (n + 0.5);
+  const xScale = rank => lm + (rank - 1) / 98 * pw;
+  const yPos = i => tm + (i + 0.75) * yStep;
+  const svg = makeSVG(W, H);
+
+  // axis
+  svg.appendChild(svgText(lm, tm-12, '← Better', { size:9, fill:CH.muted }));
+  svg.appendChild(svgText(lm+pw, tm-12, 'Worse →', { size:9, fill:CH.muted, anchor:'end' }));
+  svg.appendChild(svgLine(lm, tm+ph, lm+pw, tm+ph, CH.faint, 1));
+  [1,25,50,75,99].forEach(r => {
+    const x = xScale(r);
+    svg.appendChild(svgLine(x, tm, x, tm+ph, CH.faint, 0.5));
+    svg.appendChild(svgLine(x, tm+ph, x, tm+ph+4, CH.faint, 1));
+    svg.appendChild(svgText(x, tm+ph+14, `#${r}`, { anchor:'middle', size:9, fill:CH.muted }));
+  });
+
+  authors.forEach((a, i) => {
+    const cy = yPos(i);
+    svg.appendChild(svgText(lm-8, cy, a.author, { anchor:'end', fill:CH.text, size:11, baseline:'middle' }));
+
+    if (a.single) {
+      const b = a.books[0];
+      const x = xScale(b.rank);
+      const dot = svgCircle(x, cy, 7, CH.navy, CH.white, 1.5);
+      addTip(dot, `<strong>${b.title}</strong> (${b.year})<br>Rank #${b.rank}<br><em>${a.note}</em>`);
+      svg.appendChild(dot);
+      svg.appendChild(svgText(x, cy-13, `${b.title} (${b.year})`, { anchor:'middle', size:8, fill:CH.muted, italic:true }));
+      svg.appendChild(svgText(x, cy+16, a.note, { anchor:'middle', size:8, fill:CH.muted, italic:true }));
+    } else {
+      const better = a.books.reduce((a,b)=>a.rank<b.rank?a:b);
+      const worse  = a.books.reduce((a,b)=>a.rank>b.rank?a:b);
+      let xB = xScale(better.rank);
+      let xW = xScale(worse.rank);
+      if (Math.abs(xW - xB) < MIN_SEP) {
+        const mid = (xB + xW) / 2;
+        xB = mid - MIN_SEP/2;
+        xW = mid + MIN_SEP/2;
+      }
+      svg.appendChild(svgLine(xB, cy, xW, cy, CH.faint, 2));
+      const dBetter = svgCircle(xB, cy, 7, CH.navy, CH.white, 1.5);
+      const dWorse  = svgCircle(xW, cy, 7, CH.grey7, CH.white, 1.5);
+      addTip(dBetter, `<strong>${better.title}</strong> (${better.year})<br>Rank #${better.rank}`);
+      addTip(dWorse, `<strong>${worse.title}</strong> (${worse.year})<br>Rank #${worse.rank}`);
+      svg.appendChild(dBetter);
+      svg.appendChild(dWorse);
+      const lblY = i%2===0 ? cy-13 : cy+18;
+      const lblY2 = i%2===0 ? cy+18 : cy-13;
+      const bShort = better.title.length>22?better.title.slice(0,20)+'…':better.title;
+      const wShort = worse.title.length>22?worse.title.slice(0,20)+'…':worse.title;
+      svg.appendChild(svgText(xB, lblY,  `${bShort} (${better.year})`, { anchor:'middle', size:8, fill:CH.muted, italic:true }));
+      svg.appendChild(svgText(xW, lblY2, `${wShort} (${worse.year})`,  { anchor:'middle', size:8, fill:CH.muted, italic:true }));
+    }
+  });
+
+  // legend
+  const legY = tm + ph + 36;
+  svg.appendChild(svgCircle(lm, legY, 5, CH.navy, CH.white, 1.5));
+  svg.appendChild(svgText(lm+9, legY, 'Better-ranked title', { size:9, fill:CH.muted, baseline:'middle' }));
+  svg.appendChild(svgCircle(lm+150, legY, 5, CH.grey7, CH.white, 1.5));
+  svg.appendChild(svgText(lm+159, legY, 'Lower-ranked title', { size:9, fill:CH.muted, baseline:'middle' }));
+
+  document.getElementById('chart-8').appendChild(svg);
+}
+
+/* ── CHART 9: Bars — Page Count by Tier ─────────────── */
+function buildChart9() {
+  const data = [
+    { tier:1, avgPages:466, n:7  },
+    { tier:2, avgPages:464, n:14 },
+    { tier:3, avgPages:434, n:14 },
+    { tier:4, avgPages:320, n:7  },
+    { tier:5, avgPages:382, n:13 },
+    { tier:6, avgPages:368, n:14 },
+    { tier:7, avgPages:399, n:30 },
+  ];
+  const W=560, H=300, lm=48, rm=30, tm=30, bm=70;
+  const pw=W-lm-rm, ph=H-tm-bm;
+  const maxP = 520;
+  const n = data.length;
+  const bw = pw/n*0.6;
+  const slotW = pw/n;
+  const svg = makeSVG(W, H);
+
+  // Y axis
+  [0,100,200,300,400,500].forEach(v => {
+    const y = tm + ph - (v/maxP)*ph;
+    svg.appendChild(svgLine(lm-4, y, lm+pw, y, CH.faint, v===0?1:0.5));
+    svg.appendChild(svgText(lm-6, y, v, { anchor:'end', size:9, fill:CH.muted, baseline:'middle' }));
+  });
+  svg.appendChild(svgText(lm-38, tm+ph/2, 'Avg Pages', { anchor:'middle', size:9, fill:CH.muted, transform:`rotate(-90,${lm-32},${tm+ph/2})` }));
+
+  data.forEach((d, i) => {
+    const bh = (d.avgPages/maxP)*ph;
+    const by = tm+ph-bh;
+    const x = lm + i*slotW + slotW/2 - bw/2;
+    const rect = svgRect(x, by, bw, bh, TIER_DOT_COLORS[d.tier]);
+    addTip(rect, `<strong>Tier ${d.tier}</strong><br>Avg pages: ${d.avgPages}<br>n=${d.n} books`);
+    svg.appendChild(rect);
+    // value label above bar
+    svg.appendChild(svgText(x+bw/2, by-6, d.avgPages, { anchor:'middle', size:9.5, fill:CH.text }));
+    svg.appendChild(svgText(x+bw/2, by-17, `n=${d.n}`, { anchor:'middle', size:8, fill:CH.muted }));
+    // tier label below
+    svg.appendChild(svgText(x+bw/2, tm+ph+14, `Tier ${d.tier}`, { anchor:'middle', size:9.5, fill:CH.muted }));
+  });
+
+  document.getElementById('chart-9').appendChild(svg);
+  document.getElementById('chart-9').insertAdjacentHTML('beforeend',
+    `<p class="chart-annotation">Note: Not a clean downward slope. Tier 4 dips noticeably; Tiers 5–7 bounce back.</p>`);
+}
+
+function initCharts() {
+  buildChart1();
+  buildChart2();
+  buildChart3();
+  buildChart4();
+  buildChart5();
+  buildChart6();
+  buildChart7();
+  buildChart8();
+  buildChart9();
+}
+
+function initFadeObserver() {
+  const targets = document.querySelectorAll('.fade-target');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  targets.forEach(t => observer.observe(t));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildFilterDrawer();
+  render();
+  initCharts();
+  initFadeObserver();
+
+  document.getElementById('btn-tier').addEventListener('click', () => {
+    state.tierView = !state.tierView;
+    const btn = document.getElementById('btn-tier');
+    btn.textContent = state.tierView ? 'Show Un-Tiered Rankings' : 'Sort by Tier';
+    btn.setAttribute('aria-pressed', state.tierView);
+    render();
+  });
+
+  document.getElementById('btn-filter').addEventListener('click', () => {
+    state.filterOpen ? closeDrawer() : openDrawer();
+  });
+
+  document.getElementById('btn-close-drawer').addEventListener('click', closeDrawer);
+  document.getElementById('drawer-overlay').addEventListener('click', closeDrawer);
+
+  document.getElementById('btn-clear').addEventListener('click', () => {
+    clearFilters();
+  });
+});
+</script>
+</body>
+</html>
